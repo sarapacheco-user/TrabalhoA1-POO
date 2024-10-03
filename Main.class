@@ -1,0 +1,111 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.io.PrintStream;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Main {
+   public Main() {
+   }
+
+   public static void main(String[] var0) {
+      Ensalamento var1 = new Ensalamento();
+      Scanner var2 = new Scanner(System.in);
+      System.out.println("Sistema de Aloca\u00e7\u00e3o de Alunos");
+
+      String var3;
+      label60:
+      do {
+         System.out.println("\nComandos dispon\u00edveis:");
+         System.out.println("1 - Realizar Ensalamento");
+         System.out.println("2 - Listar Alunos");
+         System.out.println("3 - Listar Professores");
+         System.out.println("4 - Adicionar Aluno");
+         System.out.println("5 - Adicionar Professor");
+         System.out.println("6 - Remover Aluno");
+         System.out.println("7 - Sair");
+         System.out.print("Digite um comando: ");
+         PrintStream var10000;
+         String var10001;
+         Iterator var6;
+         switch (var2.nextLine()) {
+            case "1":
+               var1.realizarEnsalamento();
+               break;
+            case "2":
+               System.out.println("Alunos:");
+               var6 = var1.getAlunos().iterator();
+
+               while(true) {
+                  if (!var6.hasNext()) {
+                     continue label60;
+                  }
+
+                  Aluno var8 = (Aluno)var6.next();
+                  var10000 = System.out;
+                  var10001 = var8.getNome();
+                  var10000.println("- " + var10001 + " (" + var8.getCurso() + ")");
+               }
+            case "3":
+               System.out.println("Professores:");
+               var6 = var1.getProfessores().iterator();
+
+               while(true) {
+                  if (!var6.hasNext()) {
+                     continue label60;
+                  }
+
+                  Professor var7 = (Professor)var6.next();
+                  var10000 = System.out;
+                  var10001 = var7.getNome();
+                  var10000.println("- " + var10001 + " (" + var7.getDisciplina() + ")");
+               }
+            case "4":
+               adicionarAluno(var1, var2);
+               break;
+            case "5":
+               adicionarProfessor(var1, var2);
+               break;
+            case "6":
+               removerAluno(var1, var2);
+               break;
+            case "7":
+               System.out.println("Saindo do sistema...");
+               break;
+            default:
+               System.out.println("Comando inv\u00e1lido! Tente novamente.");
+         }
+      } while(!var3.equals("7"));
+
+      var2.close();
+   }
+
+   private static void adicionarAluno(Ensalamento var0, Scanner var1) {
+      System.out.print("Digite o nome do aluno: ");
+      String var2 = var1.nextLine();
+      System.out.print("Digite o curso do aluno: ");
+      String var3 = var1.nextLine();
+      var0.adicionarAluno(new Aluno(var2, var3));
+      System.out.println("Aluno adicionado com sucesso!");
+   }
+
+   private static void adicionarProfessor(Ensalamento var0, Scanner var1) {
+      System.out.print("Digite o nome do professor: ");
+      String var2 = var1.nextLine();
+      System.out.print("Digite a disciplina do professor: ");
+      String var3 = var1.nextLine();
+      var0.adicionarProfessor(new Professor(var2, var3));
+      System.out.println("Professor adicionado com sucesso!");
+   }
+
+   private static void removerAluno(Ensalamento var0, Scanner var1) {
+      System.out.print("Digite o nome do aluno a ser removido: ");
+      String var2 = var1.nextLine();
+      boolean var3 = var0.removerAluno(var2);
+      if (var3) {
+         System.out.println("Aluno removido com sucesso!");
+      } else {
+         System.out.println("Aluno n\u00e3o encontrado.");
+      }
+
+   }
+}
