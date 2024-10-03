@@ -1,0 +1,20 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.util.List;
+
+public interface Alocacao {
+   void adicionarAluno(Aluno var1);
+
+   void adicionarProfessor(Professor var1);
+
+   void adicionarDisciplina(Disciplina var1);
+
+   void adicionarCurso(Curso var1);
+
+   void realizarEnsalamento();
+
+   List<Aluno> getAlunos();
+
+   List<Professor> getProfessores();
+
+   List<Curso> getCursos();
+}
