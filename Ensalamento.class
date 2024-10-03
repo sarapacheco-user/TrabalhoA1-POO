@@ -1,0 +1,116 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Ensalamento implements Alocacao {
+   private List<Aluno> alunos = new ArrayList();
+   private List<Professor> professores = new ArrayList();
+   private List<Curso> cursos = new ArrayList();
+
+   public Ensalamento() {
+      this.inicializarDados();
+   }
+
+   private void inicializarDados() {
+      this.alunos.add(new Aluno("Alfredo", "TI"));
+      this.alunos.add(new Aluno("Am\u00e9lia", "TI"));
+      this.alunos.add(new Aluno("Ana", "ADM"));
+      this.alunos.add(new Aluno("Bruno", "TI"));
+      this.alunos.add(new Aluno("Bentinho", "ADM"));
+      this.alunos.add(new Aluno("Capit\u00fa", "TI"));
+      this.alunos.add(new Aluno("Debra", "TI"));
+      this.alunos.add(new Aluno("Ian", "ADM"));
+      this.alunos.add(new Aluno("Iracema", "TI"));
+      this.alunos.add(new Aluno("Joelmir", "ADM"));
+      this.alunos.add(new Aluno("Julieta", "TI"));
+      this.alunos.add(new Aluno("Luana", "ADM"));
+      this.alunos.add(new Aluno("Luciana", "TI"));
+      this.alunos.add(new Aluno("Maj\u00f4", "ADM"));
+      this.alunos.add(new Aluno("Maria", "ADM"));
+      this.alunos.add(new Aluno("Norberto", "TI"));
+      this.alunos.add(new Aluno("Paulo", "ADM"));
+      this.alunos.add(new Aluno("Romeu", "ADM"));
+      this.alunos.add(new Aluno("Wendel", "TI"));
+      this.alunos.add(new Aluno("Zoey", "TI"));
+      this.professores.add(new Professor("Mia", "POO"));
+      this.professores.add(new Professor("Saulo", "Estrutura de Dados"));
+      this.professores.add(new Professor("Paula", "BI"));
+      Curso var1 = new Curso("TI");
+      var1.adicionarDisciplina(new Disciplina("POO do curso de TI"));
+      var1.adicionarDisciplina(new Disciplina("Estrutura de Dados do curso de TI"));
+      Curso var2 = new Curso("ADM");
+      var2.adicionarDisciplina(new Disciplina("BI do curso de ADM"));
+      this.cursos.add(var1);
+      this.cursos.add(var2);
+   }
+
+   public void adicionarAluno(Aluno var1) {
+      this.alunos.add(var1);
+   }
+
+   public void adicionarProfessor(Professor var1) {
+      this.professores.add(var1);
+   }
+
+   public void adicionarDisciplina(Disciplina var1) {
+      System.out.println("Disciplina adicionada: " + var1.getNome());
+   }
+
+   public void adicionarCurso(Curso var1) {
+      this.cursos.add(var1);
+   }
+
+   public void realizarEnsalamento() {
+      Turma var1 = new Turma((Professor)this.professores.get(0), (Disciplina)((Curso)this.cursos.get(0)).getDisciplinas().get(0));
+      Iterator var2 = this.alunos.iterator();
+
+      while(var2.hasNext()) {
+         Aluno var3 = (Aluno)var2.next();
+         if (var3.getCurso().equals("TI")) {
+            var1.adicionarAluno(var3);
+         }
+      }
+
+      var1.exibirTurma();
+      Turma var5 = new Turma((Professor)this.professores.get(2), (Disciplina)((Curso)this.cursos.get(1)).getDisciplinas().get(0));
+      Iterator var6 = this.alunos.iterator();
+
+      while(var6.hasNext()) {
+         Aluno var4 = (Aluno)var6.next();
+         if (var4.getCurso().equals("ADM")) {
+            var5.adicionarAluno(var4);
+         }
+      }
+
+      var5.exibirTurma();
+   }
+
+   public List<Aluno> getAlunos() {
+      return this.alunos;
+   }
+
+   public List<Professor> getProfessores() {
+      return this.professores;
+   }
+
+   public List<Curso> getCursos() {
+      return this.cursos;
+   }
+
+   public boolean removerAluno(String var1) {
+      Iterator var2 = this.alunos.iterator();
+
+      Aluno var3;
+      do {
+         if (!var2.hasNext()) {
+            return false;
+         }
+
+         var3 = (Aluno)var2.next();
+      } while(!var3.getNome().equalsIgnoreCase(var1));
+
+      this.alunos.remove(var3);
+      return true;
+   }
+}
