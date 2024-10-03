@@ -1,0 +1,12 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+class Disciplina {
+   private String nome;
+
+   public Disciplina(String var1) {
+      this.nome = var1;
+   }
+
+   public String getNome() {
+      return this.nome;
+   }
+}
