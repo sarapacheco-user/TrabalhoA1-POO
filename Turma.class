@@ -1,0 +1,34 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Turma {
+   private Professor professor;
+   private Disciplina disciplina;
+   private List<Aluno> alunos;
+
+   public Turma(Professor var1, Disciplina var2) {
+      this.professor = var1;
+      this.disciplina = var2;
+      this.alunos = new ArrayList();
+   }
+
+   public void adicionarAluno(Aluno var1) {
+      this.alunos.add(var1);
+   }
+
+   public void exibirTurma() {
+      System.out.println("Turma: " + this.disciplina.getNome());
+      System.out.println("Professor: " + this.professor.getNome());
+      System.out.println("Alunos:");
+      Iterator var1 = this.alunos.iterator();
+
+      while(var1.hasNext()) {
+         Aluno var2 = (Aluno)var1.next();
+         System.out.println(" - " + var2.getNome());
+      }
+
+      System.out.println();
+   }
+}
