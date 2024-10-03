@@ -1,0 +1,13 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+class Aluno extends Pessoa {
+   private String curso;
+
+   public Aluno(String var1, String var2) {
+      super(var1);
+      this.curso = var2;
+   }
+
+   public String getCurso() {
+      return this.curso;
+   }
+}
